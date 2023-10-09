@@ -81,7 +81,7 @@ For detailed API documentation, please refer to our [API Documentation](https://
 
 Special thanks to the following contributors who have helped make this project possible:
 
-- Abu Taeb Nuri ([@Nuri6336](https://github.com/Nuri6336t))
+- Abu Taeb Nuri ([@Nuri6336](https://github.com/Nuri6336))
 - Omar Faruk Pial ([@omarFarukPialBJIT](https://github.com/omarFarukPialBJIT))
 - Shadril Hassan Shifat ([@shadril-bjit](https://github.com/shadril-bjit))
 - Sirajam Munira ([@munira-bjit](https://github.com/munira-bjit))
