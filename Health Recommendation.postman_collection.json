@@ -1,0 +1,1552 @@
+{
+	"info": {
+		"_postman_id": "d7f7279d-bbf9-41f7-9b34-f147f49db9df",
+		"name": "Health Recommendation",
+		"description": "In this innovative project, we will develop a **backend-only Personalized Health and Wellness Recommendation System** using **Microservices, Spring Boot, JPA, API Gateway, Discovery Server, and Authentication Service**. The system aims to provide users with tailored health and wellness recommendations, facilitate progress tracking, encourage community engagement, offer nutrition information, support mental health, utilize data analytics, and provide feedback analysis.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26502327",
+		"_collection_link": "https://planetary-eclipse-491333.postman.co/workspace/Mid-Project~57cfe021-50fd-42d7-96c0-c535c0fcc9bb/collection/28578986-d7f7279d-bbf9-41f7-9b34-f147f49db9df?action=share&source=collection_link&creator=26502327"
+	},
+	"item": [
+		{
+			"name": "User-service",
+			"item": [
+				{
+					"name": "user-registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"u2@gmail.com\",\r\n    \"password\" : \"1234\",\r\n    \"name\" : \"user-2\",\r\n    \"age\" : 20,\r\n    \"gender\" : \"male\",\r\n    \"role\" : \"USER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8106/users/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"users",
+								"register"
+							]
+						},
+						"description": "This API is used to register a new user taking user information as input."
+					},
+					"response": []
+				},
+				{
+					"name": "user-login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"u1@gmail.com\",\r\n    \"password\" : \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8106/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"users",
+								"login"
+							]
+						},
+						"description": "This API is used to Login any registered user providing email and password. It will provide the Security Token after login."
+					},
+					"response": []
+				},
+				{
+					"name": "user-health-data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1MkBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzUzNTExNX0.6iA1DwMvSEidi0WjKWtn_l5UgBtOkfWcdYijGPWM7ho",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"height\" : \"152.0\",\r\n    \"weight\" : \"50.0\",\r\n    \"sleepTime\" : \"6.0\",\r\n    \"bloodPressure\" : \"120/80\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8106/users/healthdata",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"users",
+								"healthdata"
+							]
+						},
+						"description": "This API is used to add a user's health data in the database."
+					},
+					"response": []
+				},
+				{
+					"name": "healthdata-get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1MUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzY4MzY2M30.gHESezfZJTYoVrWpc0by8Z2w8iZytOk5F2guza2QWZs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/users/healthdata",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"users",
+								"healthdata"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "healthdata-all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1MkBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzUzNTExNX0.6iA1DwMvSEidi0WjKWtn_l5UgBtOkfWcdYijGPWM7ho",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/users/healthdata/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"users",
+								"healthdata",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1MkBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzUzNTExNX0.6iA1DwMvSEidi0WjKWtn_l5UgBtOkfWcdYijGPWM7ho",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/users/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-profile-edit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1MkBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzQzMjQyNH0.XOUl0EZ1FX6SGZZqQnTDZSqIK05ttxaUUCPfhMQvQcs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"u7\",\r\n    \"age\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8106/users/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "This Service will manage User Profile and Health Data"
+		},
+		{
+			"name": "Nutrition-Service",
+			"item": [
+				{
+					"name": "Get Recipe by Food Name",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1MkBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzI1MjUwNH0.3bSAqruq3Ne0pOrj_0nr_rWyf1DezE2U5Zufw8uzGig",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/nutrition/search/Grilled Chicken Salad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"nutrition",
+								"search",
+								"Grilled Chicken Salad"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Nutrition Details by Food Name",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1MkBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzI1MjUwNH0.3bSAqruq3Ne0pOrj_0nr_rWyf1DezE2U5Zufw8uzGig",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/nutrition/details/Veggie Omelette",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"nutrition",
+								"details",
+								"Veggie Omelette"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Recommendation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1M0BnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzM2MTQwNH0.IwvkV6snD0lcj8R7xMksqvTdRp6hFg0EjIxa77h_TJs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/nutrition/recommendations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"nutrition",
+								"recommendations"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Feedback-Service",
+			"item": [
+				{
+					"name": "submit-feedback",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1MUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzU0MjEwMn0.7vnNBhoVqF_9LA8h19AVSwgGKKVrKvtXpTu_RijCqJA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"recommendationId\" : \"343\",\r\n    \"feedbackText\" : \"Joss feedback-555\",\r\n    \"feedbackRating\" : \"4.59\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8106/feedback-service/feedback/submit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"feedback-service",
+								"feedback",
+								"submit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-all-feedback",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1MUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzY4MjM3NH0.2iVw9BDjxoh9E5cEECVMPQnlay4h8IF9UOe3NvtmuA0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/feedback-service/feedback/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"feedback-service",
+								"feedback",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "progress-track",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1MUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzY4NTIxOH0.MjFKtQFFcnt9jBSLMxRWKGNRcgEyqV4Py1imWpgCD-o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/feedback-service/progress/track",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"feedback-service",
+								"progress",
+								"track"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "progresss-insights",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1MkBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzQzMzkwNn0.Bhvzi7HiE0f9mKY-4k7A_IbKfawXUwPjdN4fPrLHWZ8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/feedback-service/progress/insights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"feedback-service",
+								"progress",
+								"insights"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-feedback-by-user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1NEBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzI1OTk3OX0.yNaeNIhZYnrfJ5Kew00-iquXcAfuNIBnPKykhnGv5C0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/feedback-service/feedback/user/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"feedback-service",
+								"feedback",
+								"user",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "track-progress",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Recommendation-Service",
+			"item": [
+				{
+					"name": "recommendations-add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJBRE1JTiJdLCJleHAiOjE2OTc1MzY3MDl9.Ckd-mnECpotDSlORB3ibHfXNWUqhEoJ982YibXa3j8I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"recommendationType\": \"overWeight\",\r\n        \"recommendationCategory\": \"diet\",\r\n        \"recommendationText\": \"Focus on balanced, whole foods, limit sugary and fatty foods, and add regular exercise for weight loss.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"normalWeight\",\r\n        \"recommendationCategory\": \"diet\",\r\n        \"recommendationText\": \"Maintain a balanced diet with fruits, veggies, whole grains, lean proteins, and healthy fats. Exercise regularly and stay hydrated.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"underWeight\",\r\n        \"recommendationCategory\": \"diet\",\r\n        \"recommendationText\": \"Aim for a high-calorie, nutrient-dense diet with an emphasis on protein-rich foods, healthy fats, complex carbohydrates, and regular, balanced meals throughout the day to support healthy weight gain.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"overWeight\",\r\n        \"recommendationCategory\": \"diet\",\r\n        \"recommendationText\": \"Include more vegetables, lean proteins, and whole grains in your diet. Minimize processed foods, sugary snacks, and high-calorie beverages to aid in weight management.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"normalWeight\",\r\n        \"recommendationCategory\": \"diet\",\r\n        \"recommendationText\": \"Prioritize portion control and mindful eating. Consume a variety of foods for a well-rounded diet, and engage in regular physical activity to maintain your current healthy weight.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"underWeight\",\r\n        \"recommendationCategory\": \"diet\",\r\n        \"recommendationText\": \"Opt for frequent, nutrient-rich meals. Incorporate healthy snacks like nuts, seeds, and smoothies into your daily routine. Focus on gradually increasing your caloric intake to support weight gain.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"overWeight\",\r\n        \"recommendationCategory\": \"diet\",\r\n        \"recommendationText\": \"Ensure adequate fiber intake by including plenty of fruits, vegetables, and whole grains in your meals. Monitor portion sizes and engage in regular physical activity to manage your weight effectively.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"normalWeight\",\r\n        \"recommendationCategory\": \"diet\",\r\n        \"recommendationText\": \"Consume a balanced diet with a variety of colorful fruits and vegetables, lean proteins, and whole grains. Incorporate regular exercise to maintain your current healthy weight and overall well-being.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"underWeight\",\r\n        \"recommendationCategory\": \"diet\",\r\n        \"recommendationText\": \"Experiment with calorie-dense foods like avocados, nuts, and full-fat dairy to boost your daily caloric intake. Ensure a well-rounded diet with essential nutrients to support healthy weight gain.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"overWeight\",\r\n        \"recommendationCategory\": \"diet\",\r\n        \"recommendationText\": \"Plan balanced meals and avoid skipping them. Opt for cooking methods like grilling, steaming, or baking rather than frying. Focus on mindful eating to aid in your weight loss journey.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"normalWeight\",\r\n        \"recommendationCategory\": \"diet\",\r\n        \"recommendationText\": \"Choose a variety of nutrient-dense foods to ensure you're getting a wide range of vitamins and minerals. Incorporate regular physical activity like brisk walking or cycling for maintaining a healthy weight.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"underWeight\",\r\n        \"recommendationCategory\": \"diet\",\r\n        \"recommendationText\": \"Add extra calories through healthy fats like olive oil, nuts, and seeds. Include protein-rich foods and complex carbohydrates to your meals for a balanced and calorie-rich diet promoting weight gain.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"overWeight\",\r\n        \"recommendationCategory\": \"diet\",\r\n        \"recommendationText\": \"Monitor your daily caloric intake and stay within a reasonable range to support weight loss. Consider consulting a nutritionist to help design a personalized, calorie-controlled meal plan.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"normalWeight\",\r\n        \"recommendationCategory\": \"diet\",\r\n        \"recommendationText\": \"Opt for whole, unprocessed foods and a well-balanced diet rich in vitamins, minerals, and fiber. Maintain a regular eating schedule and stay physically active for overall health and weight management.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"underWeight\",\r\n        \"recommendationCategory\": \"diet\",\r\n        \"recommendationText\": \"Incorporate smoothies, shakes, and nuts into your diet as snacks to increase calorie intake. Aim for regular, balanced meals and consult a dietitian to create a personalized weight gain plan.\"\r\n    }, \r\n   {\r\n        \"recommendationType\": \"overWeight\",\r\n        \"recommendationCategory\": \"exercise\",\r\n        \"recommendationText\": \"Incorporate a mix of cardiovascular exercises like brisk walking, jogging, or cycling for at least 30 minutes a day, combined with strength training exercises such as squats, lunges, and push-ups to aid in weight loss and muscle toning.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"normalWeight\",\r\n        \"recommendationCategory\": \"exercise\",\r\n        \"recommendationText\": \"Maintain your weight by engaging in regular physical activity such as a combination of aerobic exercises like running or dancing, strength training exercises using bodyweight or weights, and flexibility exercises like yoga or stretching to improve overall fitness.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"underWeight\",\r\n        \"recommendationCategory\": \"exercise\",\r\n        \"recommendationText\": \"To gain muscle and healthy weight, focus on strength training exercises like weight lifting, resistance band workouts, and bodyweight exercises such as push-ups, squats, and lunges. Aim for 3-4 strength training sessions per week with adequate rest in between.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"overWeight\",\r\n        \"recommendationCategory\": \"exercise\",\r\n        \"recommendationText\": \"Incorporate at least 150 minutes of moderate-intensity aerobic exercises like brisk walking, swimming, or cycling per week, along with muscle-strengthening exercises like weight lifting or bodyweight exercises 2-3 times a week to promote weight loss and overall health.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"normalWeight\",\r\n        \"recommendationCategory\": \"exercise\",\r\n        \"recommendationText\": \"Maintain a healthy weight by engaging in at least 150 minutes of moderate-intensity aerobic exercises per week, such as jogging, cycling, or aerobic classes, complemented with muscle-strengthening exercises like bodyweight exercises or resistance training 2-3 times a week.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"underWeight\",\r\n        \"recommendationCategory\": \"exercise\",\r\n        \"recommendationText\": \"Incorporate strength training exercises like weight lifting, resistance band workouts, and bodyweight exercises such as push-ups, squats, and planks into your routine. Gradually increase the intensity and aim for consistent workouts 3-4 times a week to build muscle mass.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"overWeight\",\r\n        \"recommendationCategory\": \"exercise\",\r\n        \"recommendationText\": \"Include a mix of aerobic exercises like walking, jogging, or cycling for at least 30 minutes most days, combined with bodyweight exercises such as squats, lunges, and modified push-ups to kickstart your weight loss journey.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"normalWeight\",\r\n        \"recommendationCategory\": \"exercise\",\r\n        \"recommendationText\": \"Maintain your healthy weight with a combination of aerobic exercises like running, cycling, or dancing for at least 150 minutes a week, and strength training exercises using weights or resistance bands 2-3 times per week to enhance muscle tone and overall fitness.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"underWeight\",\r\n        \"recommendationCategory\": \"exercise\",\r\n        \"recommendationText\": \"To gain healthy weight, focus on strength training exercises like weight lifting, resistance band workouts, and bodyweight exercises such as push-ups and squats. Gradually increase the weights and aim for progressive overload to build muscle mass.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"overWeight\",\r\n        \"recommendationCategory\": \"exercise\",\r\n        \"recommendationText\": \"Begin with low-impact exercises like walking, swimming, or cycling, gradually increasing intensity and duration. Combine these with strength training exercises using bodyweight or weights to support weight loss and improve overall strength and mobility.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"normalWeight\",\r\n        \"recommendationCategory\": \"exercise\",\r\n        \"recommendationText\": \"Maintain your weight by engaging in a variety of exercises, including cardiovascular activities like running or cycling, strength training exercises using weights or bodyweight, and flexibility exercises like yoga or stretching, aiming for at least 150 minutes of moderate-intensity activity per week.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"underWeight\",\r\n        \"recommendationCategory\": \"exercise\",\r\n        \"recommendationText\": \"Focus on strength training exercises using weights, resistance bands, or bodyweight to build muscle mass and gain weight. Aim for progressive overload by gradually increasing weights and intensity to challenge your muscles and promote healthy weight gain.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"overWeight\",\r\n        \"recommendationCategory\": \"exercise\",\r\n        \"recommendationText\": \"Incorporate a mix of cardio exercises like brisk walking, cycling, or swimming for at least 30 minutes most days, complemented by bodyweight exercises such as squats, lunges, and planks to support weight loss and improve overall fitness.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"normalWeight\",\r\n        \"recommendationCategory\": \"exercise\",\r\n        \"recommendationText\": \"Maintain your healthy weight by engaging in a variety of exercises, including aerobic activities like running or dancing, strength training exercises using weights or bodyweight, and flexibility exercises like yoga or stretching, aiming for at least 150 minutes of moderate-intensity activity per week.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"underWeight\",\r\n        \"recommendationCategory\": \"exercise\",\r\n        \"recommendationText\": \"Incorporate a mix of strength training exercises like weight lifting, resistance band workouts, and bodyweight exercises such as push-ups, squats, and lunges into your routine. Gradually increase intensity and aim for consistent workouts 3-4 times a week to build muscle and gain healthy weight.\"\r\n    },\r\n\r\n    {\r\n        \"recommendationType\": \"underSleep\",\r\n        \"recommendationCategory\": \"sleep\",\r\n        \"recommendationText\": \"To improve sleep duration, maintain a consistent sleep schedule, ensuring you go to bed and wake up at the same time every day, even on weekends. Create a relaxing bedtime routine, avoid heavy meals close to bedtime, and keep your sleep environment cool, dark, and quiet for optimal rest.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"normalSleep\",\r\n        \"recommendationCategory\": \"sleep\",\r\n        \"recommendationText\": \"Ensure you get 7-9 hours of quality sleep each night by establishing a consistent sleep schedule. Create a relaxing bedtime routine, avoid heavy or spicy meals close to bedtime, and keep your sleep environment cool, dark, and quiet to support a good night's rest.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"overSleep\",\r\n        \"recommendationCategory\": \"sleep\",\r\n        \"recommendationText\": \"Strive for a balanced sleep schedule, aiming for 7-9 hours of restful sleep each night. Avoid oversleeping, as it can disrupt your daily routine and leave you feeling lethargic. Establish a calming pre-sleep routine, maintain a comfortable sleep environment, and limit exposure to screens before bed for improved sleep quality.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"underSleep\",\r\n        \"recommendationCategory\": \"sleep\",\r\n        \"recommendationText\": \"To enhance sleep duration, practice a relaxing bedtime routine like reading or gentle stretching before sleep. Opt for a balanced evening meal, avoiding heavy or spicy foods close to bedtime. Adjust your room lighting to a dim, warm setting to signal your body that it's time to wind down.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"normalSleep\",\r\n        \"recommendationCategory\": \"sleep\",\r\n        \"recommendationText\": \"Maintain a consistent sleep schedule, aiming for 7-9 hours of quality sleep each night. Create a relaxing pre-sleep routine, such as reading or gentle yoga, and dim the lights in your room to signal the body for rest. Avoid heavy or spicy meals close to bedtime and limit caffeine and screen time in the evening.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"overSleep\",\r\n        \"recommendationCategory\": \"sleep\",\r\n        \"recommendationText\": \"Strive for a balanced sleep schedule, targeting 7-9 hours of restful sleep per night. Avoid oversleeping, as it can disrupt your daily routine and leave you feeling sluggish. Establish a calming pre-sleep routine, adjust room lighting to a relaxing ambiance, and limit caffeine intake in the evening for better sleep quality.\"\r\n    },\r\n    {\r\n        \"recommendationType\": \"underSleep\",\r\n        \"recommendationCategory\": \"sleep\",\r\n        \"recommendationText\": \"Prioritize getting 7-9 hours of quality sleep each night to support your overall health. Establish a calming pre-sleep routine, avoid heavy or spicy meals close to bedtime, and create a sleep-friendly environment by keeping your room dark, cool, and quiet.\"\r\n    }, \r\n  {\r\n    \"recommendationType\": \"Happy\",\r\n    \"recommendationCategory\": \"mentalHealth\",\r\n    \"recommendationText\": \"Practice gratitude daily by writing down things you're thankful for.\"\r\n  }, \r\n  {\r\n    \"recommendationType\": \"Happy\",\r\n    \"recommendationCategory\": \"mentalHealth\",\r\n    \"recommendationText\": \"Engage in regular mindfulness meditation to stay present and appreciate life.\"\r\n  }, \r\n  {\r\n    \"recommendationType\": \"Happy\",\r\n    \"recommendationCategory\": \"mentalHealth\",\r\n    \"recommendationText\": \"Engage in hobbies or activities that bring you joy and relaxation.\"\r\n  }, \r\n  {\r\n    \"recommendationType\": \"Happy\",\r\n    \"recommendationCategory\": \"mentalHealth\",\r\n    \"recommendationText\": \"Surround yourself with positive, supportive people who lift your spirits.\"\r\n  }, \r\n  {\r\n    \"recommendationType\": \"Happy\",\r\n    \"recommendationCategory\": \"mentalHealth\",\r\n    \"recommendationText\": \"Spend time in nature, appreciating the beauty and tranquility it offers.\"\r\n  }, \r\n  {\r\n    \"recommendationType\": \"Normal\",\r\n    \"recommendationCategory\": \"mentalHealth\",\r\n    \"recommendationText\": \"Practice regular deep breathing exercises to reduce stress and anxiety.\"\r\n  },\r\n  {\r\n    \"recommendationType\": \"Normal\",\r\n    \"recommendationCategory\": \"mentalHealth\",\r\n    \"recommendationText\": \"Maintain a consistent sleep schedule to support your overall well-being.\"\r\n  },\r\n  {\r\n    \"recommendationType\": \"Normal\",\r\n    \"recommendationCategory\": \"mentalHealth\",\r\n    \"recommendationText\": \"Keep a journal to reflect on your thoughts and emotions, promoting self-awareness.\"\r\n  },\r\n  {\r\n    \"recommendationType\": \"Normal\",\r\n    \"recommendationCategory\": \"mentalHealth\",\r\n    \"recommendationText\": \"Engage in physical exercises, as they contribute to both physical and mental health.\"\r\n  },\r\n  {\r\n    \"recommendationType\": \"Normal\",\r\n    \"recommendationCategory\": \"mentalHealth\",\r\n    \"recommendationText\": \"Participate in mindfulness practices to center yourself and improve mental clarity.\"\r\n  },\r\n  {\r\n    \"recommendationType\": \"Sad\",\r\n    \"recommendationCategory\": \"mentalHealth\",\r\n    \"recommendationText\": \"Reach out to a mental health professional for support and guidance.\"\r\n  },\r\n  {\r\n    \"recommendationType\": \"Sad\",\r\n    \"recommendationCategory\": \"mentalHealth\",\r\n    \"recommendationText\": \"Engage in gentle exercises like yoga or walking to boost your mood and energy.\"\r\n  },\r\n  {\r\n    \"recommendationType\": \"Sad\",\r\n    \"recommendationCategory\": \"mentalHealth\",\r\n    \"recommendationText\": \"Practice self-compassion and be kind to yourself during challenging times.\"\r\n  },\r\n  {\r\n    \"recommendationType\": \"Sad\",\r\n    \"recommendationCategory\": \"mentalHealth\",\r\n    \"recommendationText\": \"Seek comfort and support from trusted friends or family members.\"\r\n  },\r\n  {\r\n    \"recommendationType\": \"Sad\",\r\n    \"recommendationCategory\": \"mentalHealth\",\r\n    \"recommendationText\": \"Consider engaging in creative outlets like art.\"\r\n  }\r\n]\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8106/recommendations/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"recommendations",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recommendation-diet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1MUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzY4MzY2M30.gHESezfZJTYoVrWpc0by8Z2w8iZytOk5F2guza2QWZs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/recommendations/diet",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"recommendations",
+								"diet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recommendation-exercise",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1MUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzY4MzY2M30.gHESezfZJTYoVrWpc0by8Z2w8iZytOk5F2guza2QWZs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/recommendations/exercise",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"recommendations",
+								"exercise"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recommendation-sleep",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1MUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzY4MzY2M30.gHESezfZJTYoVrWpc0by8Z2w8iZytOk5F2guza2QWZs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/recommendations/sleep",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"recommendations",
+								"sleep"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recommendation-getbyid",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1MUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzY4MzY2M30.gHESezfZJTYoVrWpc0by8Z2w8iZytOk5F2guza2QWZs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/recommendations/recommendation/13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"recommendations",
+								"recommendation",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recommendation-mental-health",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1MUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzY4MzY2M30.gHESezfZJTYoVrWpc0by8Z2w8iZytOk5F2guza2QWZs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/recommendations/mental-health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"recommendations",
+								"mental-health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mental Health Service",
+			"item": [
+				{
+					"name": "Add Mental Health Exercise",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1MkBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzI2MzExMH0.2mdz7_ra_V8tQuB7IMhP71An8jSzk3cqIt5D4mDtxUo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"exerciseTitle\" : \"Thought Exploration\",\r\n    \"exerciseDescription\" : \"Journaling\",\r\n    \"exerciseInstruction\" : \"Write about your thoughts, feelings, and experiences. No judgments or grammar concerns. Write as often as needed.\",\r\n    \"exerciseDuration\" : \"20-30 minutes\",\r\n    \"exerciseScore\" : 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8106/mental-health/exercises",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"mental-health",
+								"exercises"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Mental Health Exercise",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1NEBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzQ0MzUxOX0.j-aOn-F8ODoJm3vfrYk9P-cpR7jkrCo7re12Fo_hmfc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/mental-health/exercises",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"mental-health",
+								"exercises"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add new Mood",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1NEBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzQ0MzUxOX0.j-aOn-F8ODoJm3vfrYk9P-cpR7jkrCo7re12Fo_hmfc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"moodState\" : \"happy\",\r\n    \"stressType\" : \"low\",\r\n    \"moodNote\" : \"Bad office day!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8106/mental-health/mood-tracking",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"mental-health",
+								"mood-tracking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Mood Log",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1MUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzY4MjM3NH0.2iVw9BDjxoh9E5cEECVMPQnlay4h8IF9UOe3NvtmuA0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/mental-health/mood-tracking",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"mental-health",
+								"mood-tracking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get latest mood",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1NEBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzQ0MzUxOX0.j-aOn-F8ODoJm3vfrYk9P-cpR7jkrCo7re12Fo_hmfc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/mental-health/mood-tracking/last",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"mental-health",
+								"mood-tracking",
+								"last"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Exercise Recommendations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1NkBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzQ0NTA1OX0.1PB10HZWts8AZrSitvAUCtzPy1-bm4ryHMMUNoVDDn4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/mental-health/recommendations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"mental-health",
+								"recommendations"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dashboard-Service",
+			"item": [
+				{
+					"name": "dashboard-feedback",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJBRE1JTiJdLCJleHAiOjE2OTc1NDM3MzV9.Q5fMrN4qIsKa5siqNSX3DMv-XH5aCsmGot3oPxoLNts",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/dashboard/feedback/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"dashboard",
+								"feedback",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard-user-progress",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJBRE1JTiJdLCJleHAiOjE2OTc1NDM3MzV9.Q5fMrN4qIsKa5siqNSX3DMv-XH5aCsmGot3oPxoLNts",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/dashboard/progress/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"dashboard",
+								"progress",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dashboard-recommendations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhMUBnbWFpbC5jb20iLCJyb2xlcyI6WyJBRE1JTiJdLCJleHAiOjE2OTc1NDM3MzV9.Q5fMrN4qIsKa5siqNSX3DMv-XH5aCsmGot3oPxoLNts",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/dashboard/recommendations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"dashboard",
+								"recommendations"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notification-Service",
+			"item": [
+				{
+					"name": "add-preference",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWZpQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVTRVIiXSwiZXhwIjoxNjk3NDMwNzYwfQ.r2j1qvzgJB988Uxja3_ql3HhCU0Ww9Jni6UGP0fXSXw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"diet\": \"true\",\r\n    \"exercise\": \"false\",\r\n    \"mentalHealth\": \"true\",\r\n    \"sleep\": \"false\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8106/notification-service/notifications/preference",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"notification-service",
+								"notifications",
+								"preference"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-preference",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWZpQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVTRVIiXSwiZXhwIjoxNjk3NDMwNzYwfQ.r2j1qvzgJB988Uxja3_ql3HhCU0Ww9Jni6UGP0fXSXw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"diet\": \"true\",\r\n    \"exercise\": \"false\",\r\n    \"mentalHealth\": \"true\",\r\n    \"sleep\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8106/notification-service/notifications/preference/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"notification-service",
+								"notifications",
+								"preference",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send-email-all-user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJyb2xlcyI6WyJBRE1JTiJdLCJleHAiOjE2OTc0MjY1ODJ9.kxNC6Jd5LcbU_01heP5pHvtX95bVLRYyeVW9mPl-vXg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/notification-service/notifications/send",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"notification-service",
+								"notifications",
+								"send"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view-specific-notification",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWZpQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVTRVIiXSwiZXhwIjoxNjk3NDMwNzYwfQ.r2j1qvzgJB988Uxja3_ql3HhCU0Ww9Jni6UGP0fXSXw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/notification-service/notifications/view/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"notification-service",
+								"notifications",
+								"view",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Social-Service",
+			"item": [
+				{
+					"name": "create-group",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0YWViMDMxQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVTRVIiXSwiZXhwIjoxNjk3NDUxNDM3fQ.0-f3kDXel5uvnLJJ6o82hFxLISDNnMqIidSO8fPdgC4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"groupName\": \"Exercise for weight loose for kids\",\r\n    \"groupDescription\": \"For those who want to reduce weight and keep body fit\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8106/social-service/community/groups/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"social-service",
+								"community",
+								"groups",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "join-group",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0YWViMDMxQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVTRVIiXSwiZXhwIjoxNjk3NDUxNDM3fQ.0-f3kDXel5uvnLJJ6o82hFxLISDNnMqIidSO8fPdgC4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/social-service/community/groups/join/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"social-service",
+								"community",
+								"groups",
+								"join",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post-on-group",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0YWViMDMxQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVTRVIiXSwiZXhwIjoxNjk3NDUxNDM3fQ.0-f3kDXel5uvnLJJ6o82hFxLISDNnMqIidSO8fPdgC4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"The recipe of potato were good.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8106/social-service/community/posts/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"social-service",
+								"community",
+								"posts",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "like-on-post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0YWViMDMxQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVTRVIiXSwiZXhwIjoxNjk3NDUxNDM3fQ.0-f3kDXel5uvnLJJ6o82hFxLISDNnMqIidSO8fPdgC4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/social-service/community/like/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"social-service",
+								"community",
+								"like",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "comment-on-post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0YWViMDMxQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVTRVIiXSwiZXhwIjoxNjk3NDUxNDM3fQ.0-f3kDXel5uvnLJJ6o82hFxLISDNnMqIidSO8fPdgC4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"commentDetail\":\"Good for the health\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8106/social-service/community/comment/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"social-service",
+								"community",
+								"comment",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "following-user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0YWViMDMxQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVTRVIiXSwiZXhwIjoxNjk3NDUxNDM3fQ.0-f3kDXel5uvnLJJ6o82hFxLISDNnMqIidSO8fPdgC4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/social-service/community/follower/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"social-service",
+								"community",
+								"follower",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unfollow-user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0YWViMDMxQGdtYWlsLmNvbSIsInJvbGVzIjpbIlVTRVIiXSwiZXhwIjoxNjk3NDUxNDM3fQ.0-f3kDXel5uvnLJJ6o82hFxLISDNnMqIidSO8fPdgC4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/social-service/community/unfollow/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"social-service",
+								"community",
+								"unfollow",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "count-follower",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG5hbkBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzQ0Nzc3NX0.JaF4qZY6ZcbWBj962BJrFrCRW5y2DW-E-TBA6yLEw-I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/social-service/community/get-follower",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"social-service",
+								"community",
+								"get-follower"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG5hbkBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzQ0Nzc3NX0.JaF4qZY6ZcbWBj962BJrFrCRW5y2DW-E-TBA6yLEw-I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/social-service/community/delete-post/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"social-service",
+								"community",
+								"delete-post",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post-related-info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG5hbkBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzQ0Nzc3NX0.JaF4qZY6ZcbWBj962BJrFrCRW5y2DW-E-TBA6yLEw-I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/social-service/community/post-info/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"social-service",
+								"community",
+								"post-info",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all-group-post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG5hbkBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIl0sImV4cCI6MTY5NzQ0Nzc3NX0.JaF4qZY6ZcbWBj962BJrFrCRW5y2DW-E-TBA6yLEw-I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8106/social-service/community/group-posts/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8106",
+							"path": [
+								"social-service",
+								"community",
+								"group-posts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
