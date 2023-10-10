@@ -83,6 +83,6 @@ Special thanks to the following contributors who have helped make this project p
 
 - Abu Taeb Nuri ([@Nuri6336](https://github.com/Nuri6336))
 - Omar Faruk Pial ([@omarFarukPialBJIT](https://github.com/omarFarukPialBJIT))
-- Shadril Hassan Shifat ([@shadril-bjit](https://github.com/shadril-bjit))
+- Shadril Hassan Shifat ([@shadril-bjit](https://github.com/shadril-bjit)) ([@shadril238](https://github.com/shadril238))
 - Sirajam Munira ([@munira-bjit](https://github.com/munira-bjit))
 
